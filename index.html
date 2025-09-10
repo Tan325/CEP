@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,9 +56,6 @@
     <input type="password" id="password" placeholder="Enter password" required>
     <button onclick="handleAction()">Login</button>
     <p class="link" onclick="toggleForm()">New user? Create account</p>
-    <p style="font-size:12px; margin-top:10px;">
-      Admin → (admin / admin123)
-    </p>
   </div>
 
   <script>
@@ -80,7 +78,7 @@
       }
 
       if (isSignup) {
-        // Signup: Save user to localStorage
+        // Signup for users
         let users = JSON.parse(localStorage.getItem("users")) || {};
         if (users[username]) {
           alert("Username already exists. Choose another.");
@@ -90,12 +88,11 @@
         localStorage.setItem("users", JSON.stringify(users));
         alert("Account created! You can now log in.");
         toggleForm();
-      } 
-      else {
+      } else {
         // Login
         if (username === "admin" && password === "admin123") {
           localStorage.setItem("role", "admin");
-          window.location.href = "P_home.html";
+          window.location.href = "P_home.html"; // redirect after login
           return;
         }
 
